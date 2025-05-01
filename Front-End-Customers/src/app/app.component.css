@@ -1,0 +1,58 @@
+
+/* Customer Form Styles */
+.customer-form {
+    max-width: 500px;
+    margin: auto;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .customer-form h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Form Container Styles */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .form-field label {
+    flex-basis: 30%;
+    font-weight: 600;
+    margin-right: 1rem;
+  }
+  
+  .form-field input {
+    flex-basis: 65%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+  
+  .p-button {
+    width: 45%;
+  }
+  
+  .customer-table .p-button-danger {
+    margin-left: 0.5rem;
+  }
+  

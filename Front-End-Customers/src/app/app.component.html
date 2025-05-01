@@ -1,0 +1,124 @@
+<!-- Panel -->
+<p-panel header="Customer Management" [toggleable]="true" [styleClass]="'customer-panel'">
+  
+  <!-- Buttons Container -->
+  <div class="button-container">
+    <p-button 
+      label="Load Customers" 
+      [raised]="true" 
+      [outlined]="true" 
+      severity="help" 
+      (click)="getCustomers(); showCustomerList = !showCustomerList">
+    </p-button>
+
+    <p-button 
+      label="Add a Customer" 
+      [raised]="true" 
+      [outlined]="true" 
+      severity="secondary" 
+      (click)="showCustomerForm = !showCustomerForm">
+    </p-button>
+  </div>
+
+  <!-- Customer Form -->
+  <div *ngIf="showCustomerForm" class="customer-form">
+    <h3>Add New Customer</h3>
+    <form (ngSubmit)="addCustomer()" class="form-container">
+      <div class="form-field">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" [(ngModel)]="newCustomer.firstName" name="firstName" required />
+      </div>
+      <div class="form-field">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" [(ngModel)]="newCustomer.lastName" name="lastName" required />
+      </div>
+      <div class="form-field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="newCustomer.email" name="email" required />
+      </div>
+      <div class="form-field">
+        <label for="city">City:</label>
+        <input type="text" id="city" [(ngModel)]="newCustomer.customerInfo.city" name="city" />
+      </div>
+      <div class="form-field">
+        <label for="street">Street:</label>
+        <input type="text" id="street" [(ngModel)]="newCustomer.customerInfo.street" name="street" />
+      </div>
+      <div class="form-field">
+        <label for="address">Address:</label>
+        <input type="text" id="address" [(ngModel)]="newCustomer.customerInfo.address" name="address" />
+      </div>
+      <div class="form-field">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" [(ngModel)]="newCustomer.customerInfo.phoneNumber" name="phoneNumber" />
+      </div>
+      <div class="form-buttons">
+        <button type="submit" pButton label="Submit" icon="pi pi-check" class="p-button-success"></button>
+        <button type="button" pButton label="Cancel" icon="pi pi-times" class="p-button-secondary" (click)="showCustomerForm = false; resetForm()"></button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Customer Table -->
+  <p-table 
+    #customerTable
+    *ngIf="showCustomerList" 
+    [value]="Customer" 
+    [tableStyleClass]="'customer-table'"
+    [paginator]="true" 
+    [rows]="10" 
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+    <!-- Table Header -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Created Date</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <!-- Table Body -->
+    <ng-template pTemplate="body" let-customer>
+      <tr>
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.createdDate | date: 'short' }}</td>
+        <td>{{ customer.customerInfo?.city || 'No Info' }}</td>
+        <td>{{ customer.customerInfo?.street || 'No Info' }}</td>
+        <td>{{ customer.customerInfo?.address || 'No Info' }}</td>
+        <td>{{ customer.customerInfo?.phoneNumber || 'No Info' }}</td>
+        <td>
+          <button 
+            pButton 
+            label="Delete" 
+            icon="pi pi-trash" 
+            class="p-button-danger" 
+            (click)="deleteCustomer(customer.id)">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <!-- Empty Message -->
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="10" class="no-customers-message">No customers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <!-- Message if no data is available yet -->
+  <p *ngIf="!showCustomerList" class="no-customers-message">Select your desired operation.</p>
+
+</p-panel>
