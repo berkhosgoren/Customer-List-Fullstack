@@ -1,0 +1,42 @@
+@WebAPI-Customers_HostAddress = https://localhost:7224
+@WebAPI_Customers_HostAddress = http://localhost:5167
+
+GET {{WebAPI_Customers_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{WebAPI-Customers_HostAddress}}/api/customer/Add a Customer
+Content-Type: application/json
+
+{
+  //Customer
+}
+
+###
+
+POST {{WebAPI-Customers_HostAddress}}/api/customer/Add a Customer
+Content-Type: application/json
+
+{
+  //Customer
+}
+
+###
+
+POST {{WebAPI-Customers_HostAddress}}/api/customer/Add a Customer
+Content-Type: application/json
+
+{
+  //Customer
+}
+
+###
+
+GET {{WebAPI-Customers_HostAddress}}/api/customer/Get a Customer?id=0
+
+###
+
+GET {{WebAPI-Customers_HostAddress}}/api/customer
+
+###

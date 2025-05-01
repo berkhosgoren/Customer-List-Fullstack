@@ -1,0 +1,15 @@
+# Backend (C# / .NET)
+WebAPI-Customers/**/bin/
+WebAPI-Customers/**/obj/
+*.user
+*.suo
+WebAPI-Customers/appsettings.Development.json
+
+# Frontend (Angular)
+Front-End-Customers/node_modules/
+Front-End-Customers/dist/
+Front-End-Customers/.angular/
+
+# Common
+.env
+Uploads/
